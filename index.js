@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 
-const Settings = require('./src/settings');
+const container = require('./src/startup/container');
+
+// Resolve dependency
+const Setting = container.resolve('Setting');
 
 mongoose
-  .connect(Settings.MONGO_URI)
+  .connect(Setting.MONGO_URI)
   .then(() => console.log('MongoDB Connected!'))
   .catch(console.error);
