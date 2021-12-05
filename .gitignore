@@ -281,3 +281,4 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/yarn,node,visualstudiocode,webstorm,jspm,dotenv
 
 # Custom ignore path
+package-lock.json

@@ -1,0 +1,31 @@
+{
+  "name": "qrvey-toggl-api",
+  "version": "1.0.0",
+  "description": "API that allows time tracking (similar to Toggl.com). Time tracking application.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "serve": "node index.js",
+    "lint": "echo \"Not implement yet\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fremeva/Qrvey-toggl-api.git"
+  },
+  "keywords": [
+    "expressjs",
+    "Toggl",
+    "Time Tracking"
+  ],
+  "author": "Fredy Mendoza Vargas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fremeva/Qrvey-toggl-api/issues"
+  },
+  "homepage": "https://github.com/fremeva/Qrvey-toggl-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
