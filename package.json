@@ -8,7 +8,8 @@
     "dev": "nodemon index.js",
     "serve": "node index.js",
     "lint": "pretty-quick . && eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "unit": "jest --config test/unit/test.conf.js --coverage",
+    "test": "npm run unit",
     "prepare": "husky install"
   },
   "husky": {
