@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "docs": "jsdoc -c jsdoc.json",
     "serve": "node index.js",
     "lint": "pretty-quick . && eslint .",
     "unit": "jest --config test/unit/test.conf.js --coverage",
@@ -33,13 +34,25 @@
   },
   "homepage": "https://github.com/fremeva/Qrvey-toggl-api#readme",
   "dependencies": {
+    "argon2": "0.28.3",
+    "awilix": "6.0.0",
+    "compression": "1.7.4",
+    "cors": "2.8.5",
     "dotenv": "10.0.0",
-    "express": "^4.17.1",
-    "mongoose": "^6.0.14"
+    "express": "4.17.1",
+    "express-async-errors": "3.1.1",
+    "helmet": "4.6.0",
+    "jsonwebtoken": "8.5.1",
+    "moment": "2.29.1",
+    "mongoose": "6.0.14"
   },
   "devDependencies": {
     "eslint": "8.4.0",
     "husky": "7.0.4",
+    "jest": "27.4.3",
+    "jsdoc": "3.6.7",
+    "mockingoose": "2.15.2",
+    "nodemon": "2.0.15",
     "prettier": "2.5.1",
     "pretty-quick": "3.1.2"
   }
