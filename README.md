@@ -1,6 +1,6 @@
 # Qrvey Toggl API
 
-API that allows time tracking (similar to Toggl.com). Assuming you are building the backend for a time tracking application, Design and build an API that can serve all use-cases mentioned below. 
+API that allows time tracking (similar to Toggl.com). Assuming you are building the backend for a time tracking application, Design and build an API that can serve all use-cases mentioned below.
 
 ## Features
 
@@ -10,4 +10,3 @@ API that allows time tracking (similar to Toggl.com). Assuming you are building 
 - The application should let users create projects and associate time records with tasks, and should allow them to see their times per project.
 - Finally, each task must have a way to "continue" to rehabilitate that task (start to record time of a task taking the name of the one to be continued).
 - There should be a way to see the list of all Projects for all users with the total time spent (per project as well as per user).
-

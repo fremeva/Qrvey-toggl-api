@@ -7,8 +7,14 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "serve": "node index.js",
-    "lint": "echo \"Not implement yet\" && exit 1",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "pretty-quick . && eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx pretty-quick --staged"
+    }
   },
   "repository": {
     "type": "git",
@@ -27,5 +33,11 @@
   "homepage": "https://github.com/fremeva/Qrvey-toggl-api#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "8.4.0",
+    "husky": "7.0.4",
+    "prettier": "2.5.1",
+    "pretty-quick": "3.1.2"
   }
 }
