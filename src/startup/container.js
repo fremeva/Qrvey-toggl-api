@@ -1,7 +1,7 @@
 const { createContainer, asClass, asFunction, asValue } = require('awilix');
 
 // App
-const App = require('.');
+const AppServer = require('.');
 // Settings
 const Setting = require('./../settings');
 // Repositories
@@ -13,7 +13,7 @@ const Setting = require('./../settings');
 const container = createContainer();
 
 container.register({
-  App: asClass(App).singleton(),
+  AppServer: asClass(AppServer).singleton(),
   Setting: asValue(Setting),
   TempFunc: asFunction(() => undefined)
 });
