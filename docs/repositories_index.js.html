@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: repositories/index.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,46 +17,31 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: repositories/index.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Qrvey Toggl API</h1>
-<p>API that allows time tracking (similar to Toggl.com). Assuming you are building the backend for a time tracking application, Design and build an API that can serve all use-cases mentioned below.</p>
-<h2>Features</h2>
-<ul>
-<li>There would be multiple users using the application. Each user would have a way to see all their tasks sorted by most recent to the oldest</li>
-<li>User must be able to start a task even if it has no name. Also users should be able to pause or restart it.</li>
-<li>An user must also be able to enter a task manually by providing the name and duration of the task in hours, minutes and seconds.</li>
-<li>The application should let users create projects and associate time records with tasks, and should allow them to see their times per project.</li>
-<li>Finally, each task must have a way to &quot;continue&quot; to rehabilitate that task (start to record time of a task taking the name of the one to be continued).</li>
-<li>There should be a way to see the list of all Projects for all users with the total time spent (per project as well as per user).</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Module represent the entry point to access all repositories.
+ * @module Repositories
+ * @type {Object}
+ *
+ */
+
+module.exports = {
+  ProjectRepository: require('./project.repository'),
+  TaskRepository: require('./task.repository'),
+  TrackingTimeTaskRepository: require('./tracking-time-task.repository'),
+  UserRepository: require('./user.repository')
+};
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
