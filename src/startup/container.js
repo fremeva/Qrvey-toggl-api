@@ -7,6 +7,12 @@ const Setting = require('./../settings');
 // Models
 const { Project, Task, TrackingTimeTask, User } = require('./../models');
 // Repositories
+const {
+  ProjectRepository,
+  TaskRepository,
+  TrackingTimeTaskRepository,
+  UserRepository
+} = require('./../repositories');
 // Services
 // Controllers
 // Routes
@@ -26,7 +32,12 @@ container
     TrackingTimeTask: asValue(TrackingTimeTask),
     User: asValue(User)
   })
-  .register({})
+  .register({
+    ProjectRepository: asClass(ProjectRepository).singleton(),
+    TaskRepository: asClass(TaskRepository).singleton(),
+    TrackingTimeTaskRepository: asClass(TrackingTimeTaskRepository).singleton(),
+    UserRepository: asClass(UserRepository).singleton()
+  })
   .register({})
   .register({})
   .register({
