@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: services/base.service.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,46 +17,93 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: services/base.service.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Qrvey Toggl API</h1>
-<p>API that allows time tracking (similar to Toggl.com). Assuming you are building the backend for a time tracking application, Design and build an API that can serve all use-cases mentioned below.</p>
-<h2>Features</h2>
-<ul>
-<li>There would be multiple users using the application. Each user would have a way to see all their tasks sorted by most recent to the oldest</li>
-<li>User must be able to start a task even if it has no name. Also users should be able to pause or restart it.</li>
-<li>An user must also be able to enter a task manually by providing the name and duration of the task in hours, minutes and seconds.</li>
-<li>The application should let users create projects and associate time records with tasks, and should allow them to see their times per project.</li>
-<li>Finally, each task must have a way to &quot;continue&quot; to rehabilitate that task (start to record time of a task taking the name of the one to be continued).</li>
-<li>There should be a way to see the list of all Projects for all users with the total time spent (per project as well as per user).</li>
-</ul></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Base services module
+ * @module Services
+ */
+
+const _ = require('lodash');
+const {
+  Types: { ObjectId }
+} = require('mongoose');
+
+/**
+ * Class represent Base methods allowed to interact with repository
+ */
+class BaseService {
+  /**
+   * Abstract class to expose common methods to interact with repository
+   * @param {Object} repository Repository instance
+   */
+  constructor(repository) {
+    this.repository = repository;
+  }
+
+  async list(filter = {}, limit = 25, page = 1, sort = null) {
+    if (isNaN(page)) page = 1;
+    if (isNaN(limit)) limit = 50;
+    return await this.repository.list(filter, limit, page, sort);
+  }
+  async retrieve(id) {
+    if (!id) {
+      throw Error('id is required');
+    }
+    if (!ObjectId.isValid(id)) {
+      throw Error(`${id} is not valid id`);
+    }
+    const document = await this.repository.retrieve(id);
+    if (!document) {
+      // TODO: Must be Improvement
+      const error = new Error();
+      error.status = 404;
+      error.message = 'entity does not found';
+      throw error;
+    }
+
+    return document;
+  }
+  async create(entity) {
+    if (!_.isObject(entity) || _.isEmpty(entity)) {
+      throw new Error('entity must be not empty object');
+    }
+    return await this.repository.create(entity);
+  }
+  async update(id, entity) {
+    if (!id) {
+      throw Error('id is required');
+    }
+    if (!ObjectId.isValid(id)) {
+      throw Error(`${id} is not valid id`);
+    }
+    if (!_.isObject(entity) || _.isEmpty(entity)) {
+      throw new Error('entity must be not empty object');
+    }
+
+    return await this.repository.update(id, entity);
+  }
+  async delete(id) {
+    if (!id) {
+      throw Error('id is required');
+    }
+    if (!ObjectId.isValid(id)) {
+      throw Error(`${id} is not valid id`);
+    }
+    return await this.repository.delete(id);
+  }
+}
+module.exports = BaseService;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
