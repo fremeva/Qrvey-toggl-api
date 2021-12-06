@@ -8,14 +8,19 @@ const Setting = require('./../settings');
 // Services
 // Controllers
 // Routes
+const routerApp = require('./../routes');
 
 // Create awilix container
 const container = createContainer();
 
-container.register({
-  AppServer: asClass(AppServer).singleton(),
-  Setting: asValue(Setting),
-  TempFunc: asFunction(() => undefined)
-});
+container
+  .register({
+    AppServer: asClass(AppServer).singleton(),
+    Setting: asValue(Setting),
+    TempFunc: asFunction(() => undefined)
+  })
+  .register({
+    RouterApp: asFunction(routerApp).singleton()
+  });
 
 module.exports = container;

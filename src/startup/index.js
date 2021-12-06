@@ -1,11 +1,9 @@
 const express = require('express');
-const compression = require('compression');
-const helmet = require('helmet');
 
 class AppServer {
-  constructor({ Setting }) {
+  constructor({ Setting, RouterApp }) {
     this._setting = Setting;
-    this._app = express().use(helmet()).use(compression()).use(express.json());
+    this._app = express().use(RouterApp);
   }
 
   get app() {

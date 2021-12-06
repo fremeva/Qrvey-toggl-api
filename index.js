@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-
 const container = require('./src/startup/container');
 
-// Resolve dependency
+// Resolve dependency from container
 const Setting = container.resolve('Setting');
 const AppServer = container.resolve('AppServer');
 
