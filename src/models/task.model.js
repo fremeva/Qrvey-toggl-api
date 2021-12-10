@@ -19,6 +19,12 @@ const TaskSchema = new Schema(
       ref: 'User',
       required: [true, 'owner is required'],
       autopopulate: true
+    },
+    project: {
+      type: Schema.Types.ObjectId,
+      ref: 'Project',
+      required: false,
+      autopopulate: true
     }
   },
   {
@@ -29,5 +35,8 @@ const TaskSchema = new Schema(
     toObject: { getters: true }
   }
 );
+
+// Adding Plugins
+TaskSchema.plugin(require('mongoose-autopopulate'));
 
 module.exports = model('Task', TaskSchema);
