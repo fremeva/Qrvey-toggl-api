@@ -18,7 +18,7 @@ const ProjectSchema = new Schema(
       ref: 'User',
       type: Schema.Types.ObjectId,
       required: true,
-      autopopulate: true
+      autopopulate: { select: 'username name' }
     }
   },
   {
