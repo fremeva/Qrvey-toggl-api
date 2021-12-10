@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: UserRepository</title>
+    <title>JSDoc: Class: AuthService</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: UserRepository</h1>
+    <h1 class="page-title">Class: AuthService</h1>
 
     
 
@@ -29,9 +29,9 @@
 <header>
     
         <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="module-Repositories.html">Repositories</a>~</span>UserRepository<span class="signature">(dependency)</span><span class="type-signature"></span></h2>
+            <span class="ancestors"><a href="module-Services.html">Services</a>~</span>AuthService<span class="signature">(dependency)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Class represent methods allowed to manipulate the data to User model</p></div>
+            <div class="class-description"><p>Class represent methods allowed to Authentication user</p></div>
         
     
 </header>
@@ -46,17 +46,17 @@
     
 
     
-    <h4 class="name" id="UserRepository"><span class="type-signature"></span>new UserRepository<span class="signature">(dependency)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="AuthService"><span class="type-signature"></span>new AuthService<span class="signature">(dependency)</span><span class="type-signature"></span></h4>
     
 
     
-    <p class="summary"><p>User repository</p>.</p>
+    <p class="summary"><p>Auth service</p>.</p>
     
 
 
 
 <div class="description">
-    <p>User repository</p>
+    <p>Auth service</p>
 </div>
 
 
@@ -134,13 +134,13 @@
 
         <tr>
             
-                <td class="name"><code>User</code></td>
+                <td class="name"><code>UserService</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Model</span>
+<span class="param-type">Object</span>
 
 
             
@@ -150,7 +150,7 @@
 
             
 
-            <td class="description last"><p>Mongoose model User</p></td>
+            <td class="description last"><p>User service object</p></td>
         </tr>
 
     
@@ -198,7 +198,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="repositories_user.repository.js.html">repositories/user.repository.js</a>, <a href="repositories_user.repository.js.html#line10">line 10</a>
+        <a href="services_auth.service.js.html">services/auth.service.js</a>, <a href="services_auth.service.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -245,194 +245,6 @@
 
     
 
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="retrieveUserByField"><span class="type-signature">(async) </span>retrieveUserByField<span class="signature">(field, value)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
-    
-
-    
-    <p class="summary"><p>Retrieve a User by any field</p>.</p>
-    
-
-
-
-<div class="description">
-    <p>Retrieve a User by any field</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>field</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Field name to retrieve</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Value to retrieve</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="repositories_user.repository.js.html">repositories/user.repository.js</a>, <a href="repositories_user.repository.js.html#line28">line 28</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>return a promise with user document object found</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;Object></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
     
 
     

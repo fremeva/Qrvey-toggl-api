@@ -22,7 +22,7 @@ class UserService extends BaseService {
    *
    * @async
    * @param {String} username Username value to retrieve User
-   * @returns
+   * @returns {Promise<Object>} return a promise with user document object found
    */
   async getUserByUsername(username) {
     return await this.repository.retrieveUserByField('username', username);

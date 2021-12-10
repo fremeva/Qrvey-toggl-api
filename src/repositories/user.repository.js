@@ -23,7 +23,7 @@ class UserRepository extends BaseRepository {
    * @async
    * @param {String} field Field name to retrieve
    * @param {any} value Value to retrieve
-   * @returns
+   * @returns {Promise<Object>} return a promise with user document object found
    */
   async retrieveUserByField(field, value) {
     return await this.model.findOne({ [field]: value });

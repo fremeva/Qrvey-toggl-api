@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: repositories/tracking-time-task.repository.js</title>
+    <title>JSDoc: Source: services/auth.service.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: repositories/tracking-time-task.repository.js</h1>
+    <h1 class="page-title">Source: services/auth.service.js</h1>
 
     
 
@@ -27,26 +27,61 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Tracking time task repository module
- * @module Repositories
+ * Auth services module
+ * @module Services
  */
-const BaseRepository = require('./base.repository');
+
+const _ = require('lodash');
 
 /**
- * Class represent methods allowed to manipulate the data to Tracking Time Task model
+ * Class represent methods allowed to Authentication user
  */
-class TrackingTimeTaskRepository extends BaseRepository {
+class AuthService {
   /**
-   * TrackingTimeTask repository
+   * Auth service 
+   * 
    * @param {Object} dependency Dependency injections
-   * @param {Model} dependency.TrackingTimeTask Mongoose model Tracking Time Task
+   * @param {Object} dependency.UserService User service object
    */
-  constructor({ TrackingTimeTask }) {
-    super(TrackingTimeTask);
+  constructor({ UserService }) {
+    this.userService = UserService;
   }
+
+  async singUp(user) {
+    const {username} = user;
+    const userDb = await this.userService.getUserByUsername(username);
+    if(userDb){
+      const error = new Error();
+      error.status = 400;
+      error.message = 'User already exist';
+      throw error;
+    }
+    return await this.userService.create(user);
+  }
+  async singIn(credential) {
+    const {username, password} = credential;
+    const user = await this.userService.getUserByUsername(username);
+    if(!user){
+      const error = new Error();
+      error.status = 400;
+      error.message = 'Credential invalid!';
+      throw error;
+    }
+    if(!await user.comparePassword(password)){
+      const error = new Error();
+      error.status = 400;
+      error.message = 'Credential invalid!';
+      throw error;
+    }
+    const payload = _.pick(user, ['_id', 'username']);
+    const token = JSON.stringify(payload);
+    return {token, user};
+  }
+  async reject() {}
+  async refresh() {}
 }
 
-module.exports = TrackingTimeTaskRepository;
+module.exports = AuthService;
 </code></pre>
         </article>
     </section>
