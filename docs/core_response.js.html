@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: repositories/tracking-time-task.repository.js</title>
+    <title>JSDoc: Source: core/response.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: repositories/tracking-time-task.repository.js</h1>
+    <h1 class="page-title">Source: core/response.js</h1>
 
     
 
@@ -27,26 +27,33 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Tracking time task repository module
- * @module Repositories
+ * Class represent a response API data to client
  */
-const BaseRepository = require('./base.repository');
-
-/**
- * Class represent methods allowed to manipulate the data to Tracking Time Task model
- */
-class TrackingTimeTaskRepository extends BaseRepository {
+class Response {
   /**
-   * TrackingTimeTask repository
-   * @param {Object} dependency Dependency injections
-   * @param {Model} dependency.TrackingTimeTask Mongoose model Tracking Time Task
+   *
+   * @param {Array|Object|String} data data response to client
+   * @param {String} message Description message response
+   * @param {Number} status Number status response.
    */
-  constructor({ TrackingTimeTask }) {
-    super(TrackingTimeTask);
+  constructor(data, message, status = 200) {
+    this.data = data || {};
+    this.status = status || 200;
+    this.message = message || 'Request was resolved successfully';
+  }
+
+  /**
+   * Wrapper from response send or json method and return response.
+   *
+   * @param {Object} res Express response object reference
+   * @returns {Object} Return response express object
+   */
+  send(res) {
+    return res.status(this.status).json(this);
   }
 }
 
-module.exports = TrackingTimeTaskRepository;
+module.exports = Response;
 </code></pre>
         </article>
     </section>

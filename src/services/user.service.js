@@ -16,6 +16,17 @@ class UserService extends BaseService {
   constructor({ UserRepository }) {
     super(UserRepository);
   }
+
+  /**
+   * Get a User by username field
+   *
+   * @async
+   * @param {String} username Username value to retrieve User
+   * @returns {Promise<Object>} return a promise with user document object found
+   */
+  async getUserByUsername(username) {
+    return await this.repository.retrieveUserByField('username', username);
+  }
 }
 
 module.exports = UserService;

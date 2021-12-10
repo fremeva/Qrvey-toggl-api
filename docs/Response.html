@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: UserRepository</title>
+    <title>JSDoc: Class: Response</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: UserRepository</h1>
+    <h1 class="page-title">Class: Response</h1>
 
     
 
@@ -28,10 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="module-Repositories.html">Repositories</a>~</span>UserRepository<span class="signature">(dependency)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Response<span class="signature">(data, message, status)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Class represent methods allowed to manipulate the data to User model</p></div>
+            <div class="class-description"><p>Class represent a response API data to client</p></div>
         
     
 </header>
@@ -46,18 +45,12 @@
     
 
     
-    <h4 class="name" id="UserRepository"><span class="type-signature"></span>new UserRepository<span class="signature">(dependency)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Response"><span class="type-signature"></span>new Response<span class="signature">(data, message, status)</span><span class="type-signature"></span></h4>
     
 
     
-    <p class="summary"><p>User repository</p>.</p>
-    
 
 
-
-<div class="description">
-    <p>User repository</p>
-</div>
 
 
 
@@ -82,6 +75,8 @@
         
 
         
+        <th>Default</th>
+        
 
         <th class="last">Description</th>
     </tr>
@@ -92,13 +87,19 @@
 
         <tr>
             
-                <td class="name"><code>dependency</code></td>
+                <td class="name"><code>data</code></td>
             
 
             <td class="type">
             
                 
+<span class="param-type">Array</span>
+|
+
 <span class="param-type">Object</span>
+|
+
+<span class="param-type">String</span>
 
 
             
@@ -107,57 +108,68 @@
             
 
             
-
-            <td class="description last"><p>Dependency injections</p>
-                <h6>Properties</h6>
+                <td class="default">
                 
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>User</code></td>
+                </td>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">Model</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Mongoose model User</p></td>
+            <td class="description last"><p>data response to client</p></td>
         </tr>
 
     
-    </tbody>
-</table>
 
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
             </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Description message response</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>status</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    200
+                
+                </td>
+            
+
+            <td class="description last"><p>Number status response.</p></td>
         </tr>
 
     
@@ -198,7 +210,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="repositories_user.repository.js.html">repositories/user.repository.js</a>, <a href="repositories_user.repository.js.html#line10">line 10</a>
+        <a href="core_response.js.html">core/response.js</a>, <a href="core_response.js.html#line4">line 4</a>
     </li></ul></dd>
     
 
@@ -254,17 +266,17 @@
     
 
     
-    <h4 class="name" id="retrieveUserByField"><span class="type-signature">(async) </span>retrieveUserByField<span class="signature">(field, value)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
+    <h4 class="name" id="send"><span class="type-signature"></span>send<span class="signature">(res)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
-    <p class="summary"><p>Retrieve a User by any field</p>.</p>
+    <p class="summary">Wrapper from response send or json method and return response.</p>
     
 
 
 
 <div class="description">
-    <p>Retrieve a User by any field</p>
+    <p>Wrapper from response send or json method and return response.</p>
 </div>
 
 
@@ -300,13 +312,13 @@
 
         <tr>
             
-                <td class="name"><code>field</code></td>
+                <td class="name"><code>res</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
             
@@ -316,30 +328,7 @@
 
             
 
-            <td class="description last"><p>Field name to retrieve</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>value</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Value to retrieve</p></td>
+            <td class="description last"><p>Express response object reference</p></td>
         </tr>
 
     
@@ -380,7 +369,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="repositories_user.repository.js.html">repositories/user.repository.js</a>, <a href="repositories_user.repository.js.html#line28">line 28</a>
+        <a href="core_response.js.html">core/response.js</a>, <a href="core_response.js.html#line23">line 23</a>
     </li></ul></dd>
     
 
@@ -409,7 +398,7 @@
 
         
 <div class="param-desc">
-    <p>return a promise with user document object found</p>
+    <p>Return response express object</p>
 </div>
 
 
@@ -420,7 +409,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;Object></span>
+<span class="param-type">Object</span>
 
 
     </dd>

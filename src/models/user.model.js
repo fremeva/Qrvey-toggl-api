@@ -31,13 +31,15 @@ const UserSchema = new Schema(
       createdAt: true,
       updatedAt: true
     },
-    toObject: { getters: true }
+    toObject: { getters: true },
+    toJSON: { getters: true }
   }
 );
 
 /** Override transform toJSON */
 UserSchema.set('toJSON', {
   transform: (doc, ret) => {
+    // Deleting sensitive data
     delete ret.password;
     return ret;
   }
