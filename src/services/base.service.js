@@ -59,7 +59,7 @@ class BaseService {
     if (!_.isObject(entity) || _.isEmpty(entity)) {
       throw new Error('entity must be not empty object');
     }
-
+    await this.retrieve(id); // Validate user by id
     return await this.repository.update(id, entity);
   }
   async delete(id) {
@@ -69,6 +69,7 @@ class BaseService {
     if (!ObjectId.isValid(id)) {
       throw Error(`${id} is not valid id`);
     }
+    await this.retrieve(id); // Validate user by id
     return await this.repository.delete(id);
   }
 }
