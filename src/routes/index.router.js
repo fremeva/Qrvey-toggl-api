@@ -1,4 +1,5 @@
 module.exports = {
-  UserRouter: require('./user.router'),
-  ProjectRouter: require('./project.router')
+  ProjectRouter: require('./project.router'),
+  TaskRouter: require('./task.router'),
+  UserRouter: require('./user.router')
 };

@@ -22,10 +22,18 @@ const {
   UserService
 } = require('./../services');
 // Controllers
-const { UserController, ProjectController } = require('./../controllers');
+const {
+  UserController,
+  ProjectController,
+  TaskController
+} = require('./../controllers');
 // Routes
 const routerApp = require('./../routes');
-const { UserRouter, ProjectRouter } = require('./../routes/index.router');
+const {
+  ProjectRouter,
+  TaskRouter,
+  UserRouter
+} = require('./../routes/index.router');
 
 // Create awilix container
 const container = createContainer();
@@ -56,12 +64,14 @@ container
   })
   .register({
     UserController: asClass(UserController).singleton(),
-    ProjectController: asClass(ProjectController).singleton()
+    ProjectController: asClass(ProjectController).singleton(),
+    TaskController: asClass(TaskController).singleton()
   })
   .register({
+    ProjectRouter: asFunction(ProjectRouter).singleton(),
     RouterApp: asFunction(routerApp).singleton(),
-    UserRouter: asFunction(UserRouter).singleton(),
-    ProjectRouter: asFunction(ProjectRouter).singleton()
+    TaskRouter: asFunction(TaskRouter).singleton(),
+    UserRouter: asFunction(UserRouter).singleton()
   });
 
 module.exports = container;
