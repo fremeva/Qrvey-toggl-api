@@ -3,6 +3,7 @@
  * @module Models
  */
 const { Schema, model } = require('mongoose');
+const { DEFAULT_FORMAT_DURATION_STRING } = require('./../core/constant');
 /**
  * Tracking time task schema mongoose to represent document in MongoDB
  * @constructor TrackingTimeTask
@@ -20,11 +21,18 @@ const TrackingTimeTaskSchema = new Schema(
     },
     endDate: {
       type: Date,
-      required: false
+      required: false,
+      default: null
+    },
+    durationMiliseconds: {
+      type: Number,
+      required: false,
+      default: null
     },
     duration: {
-      type: Number,
-      required: false
+      type: String,
+      require: false,
+      default: DEFAULT_FORMAT_DURATION_STRING
     }
   },
   {

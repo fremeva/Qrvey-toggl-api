@@ -1,4 +1,6 @@
 module.exports.STATUS_TASK = {
   RUNNING: 'RUNNING',
-  STOPPED: 'STOPPED'
+  PAUSED: 'PAUSED'
 };
+
+module.exports.DEFAULT_FORMAT_DURATION_STRING = '00:00:00';
