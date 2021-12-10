@@ -17,7 +17,8 @@ const ProjectSchema = new Schema(
     owner: {
       ref: 'User',
       type: Schema.Types.ObjectId,
-      required: true
+      required: true,
+      autopopulate: true
     }
   },
   {
@@ -28,5 +29,8 @@ const ProjectSchema = new Schema(
     toObject: { getters: true }
   }
 );
+
+// Adding Plugins
+ProjectSchema.plugin(require('mongoose-autopopulate'));
 
 module.exports = model('Project', ProjectSchema);
