@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: User</title>
+    <title>JSDoc: Source: helpers/aggregation-model.helper.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,140 +17,59 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: User</h1>
+    <h1 class="page-title">Source: helpers/aggregation-model.helper.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="module-Models.html">Models</a>~</span>User<span class="signature">()</span><span class="type-signature"></span></h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-
-    
-    <h4 class="name" id="User"><span class="type-signature"></span>new User<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-    <p class="summary"><p>User schema mongoose to represent document in MongoDB</p>.</p>
-    
-
-
-
-<div class="description">
-    <p>User schema mongoose to represent document in MongoDB</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_user.model.js.html">models/user.model.js</a>, <a href="models_user.model.js.html#line7">line 7</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const _ = require('lodash');
+const { model } = require('mongoose');
+
+const { transformMillisecondsToFormatDate } = require('./time.helper');
+/**
+ * Propagate duration update to ref model related with a local model
+ *
+ * @async
+ * @param {String} local Model name that was evaluated into hook for example
+ * @param {String} ref Parent model that you want to update with agregation sum
+ * @param {String} localField local field with match ref model
+ * @param {ObjectId|String} _id ObjectId or string represent ObjectId ref model you want update
+ * @returns {Promise&lt;Model|null>} model objec if was successfully or null if aggregation query was empty
+ */
+const PropageDurationUpdateParentModelAggregation = async (
+  local,
+  ref,
+  localField,
+  _id
+) => {
+  const query = await model(local).aggregate([
+    { $match: { [localField]: _id } },
+    {
+      $project: {
+        durationMilliseconds: { $ifNull: ['$durationMilliseconds', 0] }
+      }
+    },
+    { $group: { _id: null, total: { $sum: '$durationMilliseconds' } } }
+  ]);
+  if (_.isArray(query) &amp;&amp; !_.isEmpty(query)) {
+    const { total } = query[0];
+    const data = {
+      durationMilliseconds: total,
+      duration: await transformMillisecondsToFormatDate(total)
+    };
+    return model(ref).findByIdAndUpdate(_id, data, { runValidators: true });
+  }
+  return null;
+};
+
+module.exports = { PropageDurationUpdateParentModelAggregation };
+</code></pre>
+        </article>
+    </section>
 
 
 

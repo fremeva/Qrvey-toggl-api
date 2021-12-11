@@ -236,7 +236,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helpers_time.js.html">helpers/time.js</a>, <a href="helpers_time.js.html#line10">line 10</a>
+        <a href="helpers_time.helper.js.html">helpers/time.helper.js</a>, <a href="helpers_time.helper.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -277,6 +277,239 @@
     <dd>
         
 <span class="param-type">Promise.&lt;Number></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="PropageDurationUpdateParentModelAggregation"><span class="type-signature">(async) </span>PropageDurationUpdateParentModelAggregation<span class="signature">(local, ref, localField, _id)</span><span class="type-signature"> &rarr; {Promise.&lt;(Model|null)>}</span></h4>
+    
+
+    
+    <p class="summary"><p>Propagate duration update to ref model related with a local model</p>.</p>
+    
+
+
+
+<div class="description">
+    <p>Propagate duration update to ref model related with a local model</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>local</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Model name that was evaluated into hook for example</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ref</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Parent model that you want to update with agregation sum</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>localField</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>local field with match ref model</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ObjectId</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>ObjectId or string represent ObjectId ref model you want update</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="helpers_aggregation-model.helper.js.html">helpers/aggregation-model.helper.js</a>, <a href="helpers_aggregation-model.helper.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>model objec if was successfully or null if aggregation query was empty</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;(Model|null)></span>
 
 
     </dd>
@@ -452,7 +685,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="helpers_time.js.html">helpers/time.js</a>, <a href="helpers_time.js.html#line22">line 22</a>
+        <a href="helpers_time.helper.js.html">helpers/time.helper.js</a>, <a href="helpers_time.helper.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -520,13 +753,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Controllers.html">Controllers</a></li><li><a href="module-Core.html">Core</a></li><li><a href="module-Middlewares.html">Middlewares</a></li><li><a href="module-Models.html">Models</a></li><li><a href="module-Repositories.html">Repositories</a></li><li><a href="module-Services.html">Services</a></li></ul><h3>Classes</h3><ul><li><a href="AppServer.html">AppServer</a></li><li><a href="module-Controllers-ProjectController.html">ProjectController</a></li><li><a href="module-Controllers-TaskController.html">TaskController</a></li><li><a href="module-Controllers-UserController.html">UserController</a></li><li><a href="module-Core-BadRequestError.html">BadRequestError</a></li><li><a href="module-Core-ForbiddenRequestError.html">ForbiddenRequestError</a></li><li><a href="module-Core-NotAcceptableError.html">NotAcceptableError</a></li><li><a href="module-Core-NotAuthenticatedError.html">NotAuthenticatedError</a></li><li><a href="module-Core-NotFoundError.html">NotFoundError</a></li><li><a href="module-Core-ServerError.html">ServerError</a></li><li><a href="module-Core-TokenExpiredError.html">TokenExpiredError</a></li><li><a href="module-Models-Project.html">Project</a></li><li><a href="module-Models-Task.html">Task</a></li><li><a href="module-Models-TrackingTimeTask.html">TrackingTimeTask</a></li><li><a href="module-Models-User.html">User</a></li><li><a href="module-Repositories-BaseRepository.html">BaseRepository</a></li><li><a href="module-Repositories-ProjectRepository.html">ProjectRepository</a></li><li><a href="module-Repositories-TaskRepository.html">TaskRepository</a></li><li><a href="module-Repositories-TrackingTimeTaskRepository.html">TrackingTimeTaskRepository</a></li><li><a href="module-Repositories-UserRepository.html">UserRepository</a></li><li><a href="module-Services-BaseService.html">BaseService</a></li><li><a href="module-Services-ProjectService.html">ProjectService</a></li><li><a href="module-Services-TaskService.html">TaskService</a></li><li><a href="module-Services-TrackingTimeTaskService.html">TrackingTimeTaskService</a></li><li><a href="module-Services-UserService.html">UserService</a></li><li><a href="Response.html">Response</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getDateDiffInMilliseconds">getDateDiffInMilliseconds</a></li><li><a href="global.html#transformMillisecondsToFormatDate">transformMillisecondsToFormatDate</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Controllers.html">Controllers</a></li><li><a href="module-Core.html">Core</a></li><li><a href="module-Middlewares.html">Middlewares</a></li><li><a href="module-Models.html">Models</a></li><li><a href="module-Repositories.html">Repositories</a></li><li><a href="module-Services.html">Services</a></li></ul><h3>Classes</h3><ul><li><a href="AppServer.html">AppServer</a></li><li><a href="module-Controllers-ProjectController.html">ProjectController</a></li><li><a href="module-Controllers-TaskController.html">TaskController</a></li><li><a href="module-Controllers-UserController.html">UserController</a></li><li><a href="module-Core-BadRequestError.html">BadRequestError</a></li><li><a href="module-Core-ForbiddenRequestError.html">ForbiddenRequestError</a></li><li><a href="module-Core-NotAcceptableError.html">NotAcceptableError</a></li><li><a href="module-Core-NotAuthenticatedError.html">NotAuthenticatedError</a></li><li><a href="module-Core-NotFoundError.html">NotFoundError</a></li><li><a href="module-Core-ServerError.html">ServerError</a></li><li><a href="module-Core-TokenExpiredError.html">TokenExpiredError</a></li><li><a href="module-Models-Project.html">Project</a></li><li><a href="module-Models-Task.html">Task</a></li><li><a href="module-Models-TrackingTimeTask.html">TrackingTimeTask</a></li><li><a href="module-Models-User.html">User</a></li><li><a href="module-Repositories-BaseRepository.html">BaseRepository</a></li><li><a href="module-Repositories-ProjectRepository.html">ProjectRepository</a></li><li><a href="module-Repositories-TaskRepository.html">TaskRepository</a></li><li><a href="module-Repositories-TrackingTimeTaskRepository.html">TrackingTimeTaskRepository</a></li><li><a href="module-Repositories-UserRepository.html">UserRepository</a></li><li><a href="module-Services-BaseService.html">BaseService</a></li><li><a href="module-Services-ProjectService.html">ProjectService</a></li><li><a href="module-Services-TaskService.html">TaskService</a></li><li><a href="module-Services-TrackingTimeTaskService.html">TrackingTimeTaskService</a></li><li><a href="module-Services-UserService.html">UserService</a></li><li><a href="Response.html">Response</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getDateDiffInMilliseconds">getDateDiffInMilliseconds</a></li><li><a href="global.html#PropageDurationUpdateParentModelAggregation">PropageDurationUpdateParentModelAggregation</a></li><li><a href="global.html#transformMillisecondsToFormatDate">transformMillisecondsToFormatDate</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Dec 10 2021 21:51:24 GMT-0500 (Colombia Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sat Dec 11 2021 02:42:31 GMT-0500 (Colombia Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
