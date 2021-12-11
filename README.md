@@ -39,7 +39,9 @@ npm start
 
 # API Documentation and Scripts
 
-You can check api documentation generated with Postman here: [Documentation API](https://documenter.getpostman.com/view/500426/UVR4PVzx 'API Documentation')
+You can check api documentation generated with Postman here: [Documentation API](https://documenter.getpostman.com/view/500426/UVR4PVzx 'API Documentation').
+
+Also, you can import json file into postman desktop application to test each endpoint avaliable
 
 ### Helps
 
