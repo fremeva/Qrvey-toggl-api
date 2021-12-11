@@ -114,6 +114,44 @@ class TaskController {
       next(err);
     }
   }
+
+  /**
+   * Pause a running task
+   *
+   * @async
+   * @param {Object} req req express request object
+   * @param {Object} res res express response object
+   * @param {Function} next next express middleware function to catch error
+   * @returns {Promise} Promise object represent http express response
+   */
+  async pause(req, res, next) {
+    try {
+      const { id } = req.params;
+      const data = await _taskService.pause(id);
+      return new Response(data, 'Task paused successfully').send(res);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  /**
+   * Restart a running task
+   *
+   * @async
+   * @param {Object} req req express request object
+   * @param {Object} res res express response object
+   * @param {Function} next next express middleware function to catch error
+   * @returns {Promise} Promise object represent http express response
+   */
+  async restart(req, res, next) {
+    try {
+      const { id } = req.params;
+      const data = await _taskService.restart(id);
+      return new Response(data, 'Task restarted successfully').send(res);
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 module.exports = TaskController;

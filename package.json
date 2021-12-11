@@ -9,7 +9,7 @@
     "docs": "jsdoc -c jsdoc.json",
     "serve": "node index.js",
     "lint": "pretty-quick . && eslint .",
-    "unit": "jest --config test/unit/test.conf.js --coverage",
+    "unit": "jest --coverage",
     "test": "npm run unit",
     "prepare": "husky install"
   },
@@ -17,6 +17,9 @@
     "hooks": {
       "pre-commit": "npx pretty-quick --staged"
     }
+  },
+  "jest":{
+    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
@@ -46,7 +49,8 @@
     "lodash": "4.17.21",
     "moment": "2.29.1",
     "mongoose": "6.0.14",
-    "mongoose-autopopulate": "0.16.0"
+    "mongoose-autopopulate": "0.16.0",
+    "mongoose-beautiful-unique-validation": "7.1.1"
   },
   "devDependencies": {
     "eslint": "8.4.0",
