@@ -9,7 +9,7 @@
     "docs": "jsdoc -c jsdoc.json",
     "serve": "node index.js",
     "lint": "pretty-quick . && eslint .",
-    "unit": "jest --config test/unit/test.conf.js --coverage",
+    "unit": "jest --coverage",
     "test": "npm run unit",
     "prepare": "husky install"
   },
@@ -17,6 +17,9 @@
     "hooks": {
       "pre-commit": "npx pretty-quick --staged"
     }
+  },
+  "jest":{
+    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
