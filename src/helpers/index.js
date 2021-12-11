@@ -1,3 +1,4 @@
 module.exports = {
-  ...require('./time')
+  ...require('./time.helper'),
+  ...require('./aggregation-model.helper')
 };

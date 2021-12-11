@@ -25,7 +25,7 @@ const ProjectSchema = new Schema(
     durationMilliseconds: {
       type: Number,
       required: false,
-      default: null
+      default: 0
     },
     duration: {
       type: String,
@@ -45,5 +45,24 @@ const ProjectSchema = new Schema(
 // Virtual Population & autopopulate
 // Adding Plugins
 ProjectSchema.plugin(require('mongoose-autopopulate'));
+
+/**
+ * Delete trigger Handler function
+ *
+ * @async
+ * @param {Document} res
+ * @param {Function} next
+ */
+const deleteTriggerHander = async function (res, next) {
+  const filter = { project: res._id };
+  const tasks = await model('Task').find(filter).select('name _id');
+  const ids = tasks.map((t) => t._id);
+  // Clean related data
+  model('Task').deleteMany(filter);
+  model('TrackingTimeTask').deleteMany({ task: { $in: ids } });
+  next();
+};
+ProjectSchema.post('findOneAndDelete', deleteTriggerHander);
+ProjectSchema.post('remove', deleteTriggerHander);
 
 module.exports = model('Project', ProjectSchema);

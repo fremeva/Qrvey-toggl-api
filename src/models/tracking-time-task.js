@@ -6,7 +6,8 @@ const { Schema, model } = require('mongoose');
 const { DEFAULT_FORMAT_DURATION_STRING } = require('./../core/constant');
 const {
   getDateDiffInMilliseconds,
-  transformMillisecondsToFormatDate
+  transformMillisecondsToFormatDate,
+  PropageDurationUpdateParentModelAggregation
 } = require('../helpers');
 /**
  * Tracking time task schema mongoose to represent document in MongoDB
@@ -31,7 +32,7 @@ const TrackingTimeTaskSchema = new Schema(
     durationMilliseconds: {
       type: Number,
       required: false,
-      default: null
+      default: 0
     },
     duration: {
       type: String,
@@ -47,14 +48,15 @@ const TrackingTimeTaskSchema = new Schema(
 // Document, Models and Query Middlewares
 TrackingTimeTaskSchema.pre('save', async function (next) {
   const doc = this;
-  const isCompleted = !doc.isNew && doc.isModified('endDate');
-  if (isCompleted) {
-    doc.durationMilliseconds = await getDateDiffInMilliseconds(
+  this.$locals.isCompleted = !doc.isNew && doc.isModified('endDate');
+  if (this.$locals.isCompleted) {
+    const durationMilliseconds = await getDateDiffInMilliseconds(
       doc.startDate,
       doc.endDat
     );
+    doc.durationMilliseconds = durationMilliseconds;
     doc.duration = await transformMillisecondsToFormatDate(
-      doc.durationMilliseconds
+      durationMilliseconds
     );
   }
   next();
@@ -72,6 +74,34 @@ TrackingTimeTaskSchema.pre('findOneAndUpdate', async function (next) {
       durationMilliseconds,
       duration: await transformMillisecondsToFormatDate(durationMilliseconds)
     });
+  }
+  next();
+});
+
+TrackingTimeTaskSchema.post('save', async function (res, next) {
+  const { isCompleted } = this.$locals;
+  if (isCompleted) {
+    const trackingTimeId = res.task._id || res.task;
+    await PropageDurationUpdateParentModelAggregation(
+      'TrackingTimeTask',
+      'Task',
+      'task',
+      trackingTimeId
+    );
+  }
+  next();
+});
+
+TrackingTimeTaskSchema.post('findOneAndUpdate', async function (res, next) {
+  const { durationMilliseconds } = this.getUpdate().$set;
+  if (durationMilliseconds) {
+    const trackingTimeId = res.task._id || res.task;
+    await PropageDurationUpdateParentModelAggregation(
+      'TrackingTimeTask',
+      'Task',
+      'task',
+      trackingTimeId
+    );
   }
   next();
 });
