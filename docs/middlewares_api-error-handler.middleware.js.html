@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: startup/index.js</title>
+    <title>JSDoc: Source: middlewares/api-error-handler.middleware.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: startup/index.js</h1>
+    <h1 class="page-title">Source: middlewares/api-error-handler.middleware.js</h1>
 
     
 
@@ -26,47 +26,29 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const express = require('express');
+            <pre class="prettyprint source linenums"><code>/**
+ * APIError middleware module
+ * @module Middlewares
+ *
+ */
 
 /**
- * Class represent a express server application
+ *  API Error handler middleware
+ *
+ * @param {Object} err Error Exception to Catch
+ * @param {Object} req Express Request Object
+ * @param {Object} res Express Response Object
+ * @param {Function} next Express next middleware function
  */
-class AppServer {
-  /**
-   * Create and configure express server application
-   * @param {Object} dependency Dependency injections
-   * @param {Object} dependency.Setting Setting object has all enviroments and configuration var
-   * @param {express.Router} dependency.RouterApp All routes to application
-   */
-  constructor({ Setting, RouterApp }) {
-    this._setting = Setting;
-    this._app = express().use(RouterApp);
-  }
+// eslint-disable-next-line no-unused-vars
+const APIErrorHandlerMiddleware = async (err, req, res, next) => {
+  err.status = err.status || 500;
+  err.error = err.message || 'A server error occurred';
 
-  /**
-   * Get app value
-   * @return {express.Application} The app express instance.
-   */
-  get app() {
-    return this._app;
-  }
+  res.status(err.status).json(err);
+};
 
-  /**
-   * Run express server application
-   *
-   * @async
-   */
-  async run() {
-    this._app.listen(this._setting.PORT, (err) => {
-      if (err) throw new Error(err);
-      console.log(
-        `${this._setting.APP_NAME} Running on port ${this._setting.PORT}`
-      );
-    });
-  }
-}
-
-module.exports = AppServer;
+module.exports = APIErrorHandlerMiddleware;
 </code></pre>
         </article>
     </section>

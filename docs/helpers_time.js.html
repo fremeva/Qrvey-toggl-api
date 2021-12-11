@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: startup/index.js</title>
+    <title>JSDoc: Source: helpers/time.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: startup/index.js</h1>
+    <h1 class="page-title">Source: helpers/time.js</h1>
 
     
 
@@ -26,47 +26,38 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const express = require('express');
+            <pre class="prettyprint source linenums"><code>const moment = require('moment');
 
 /**
- * Class represent a express server application
+ * Get diff btween two dates in milliseconds
+ * @async
+ * @param {Date|String} then then date or string date format
+ * @param {Date|String} now date now or string date format
+ * @returns {Promise&lt;Number>} return diff between two date in milliseconds
  */
-class AppServer {
-  /**
-   * Create and configure express server application
-   * @param {Object} dependency Dependency injections
-   * @param {Object} dependency.Setting Setting object has all enviroments and configuration var
-   * @param {express.Router} dependency.RouterApp All routes to application
-   */
-  constructor({ Setting, RouterApp }) {
-    this._setting = Setting;
-    this._app = express().use(RouterApp);
-  }
+const getDateDiffInMilliseconds = async (then, now) => {
+  return moment(now).diff(moment(then));
+};
 
-  /**
-   * Get app value
-   * @return {express.Application} The app express instance.
-   */
-  get app() {
-    return this._app;
-  }
+/**
+ * Transform milliseconds to format datetime
+ *
+ * @async
+ * @param {Number} millseconds
+ * @param {String} [format="HH:mm:ss"]
+ * @returns {Promise&lt;String>} return string representation milliseconds to date with formats
+ */
+const transformMillisecondsToFormatDate = async (
+  millseconds,
+  format = 'HH:mm:ss'
+) => {
+  return moment.utc(millseconds).format(format);
+};
 
-  /**
-   * Run express server application
-   *
-   * @async
-   */
-  async run() {
-    this._app.listen(this._setting.PORT, (err) => {
-      if (err) throw new Error(err);
-      console.log(
-        `${this._setting.APP_NAME} Running on port ${this._setting.PORT}`
-      );
-    });
-  }
-}
-
-module.exports = AppServer;
+module.exports = {
+  getDateDiffInMilliseconds,
+  transformMillisecondsToFormatDate
+};
 </code></pre>
         </article>
     </section>

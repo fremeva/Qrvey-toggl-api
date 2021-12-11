@@ -198,7 +198,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_task.service.js.html">services/task.service.js</a>, <a href="services_task.service.js.html#line10">line 10</a>
+        <a href="services_task.service.js.html">services/task.service.js</a>, <a href="services_task.service.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -232,6 +232,15 @@
     </div>
 
     
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li>BaseService</li>
+    </ul>
+
 
     
 
@@ -245,6 +254,328 @@
 
     
 
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="pause"><span class="type-signature">(async) </span>pause<span class="signature">(id)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
+    
+
+    
+    <p class="summary"><p>Pause a task is running</p>.</p>
+    
+
+
+
+<div class="description">
+    <p>Pause a task is running</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">ObjectId</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>ObjectId task to want pause</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="services_task.service.js.html">services/task.service.js</a>, <a href="services_task.service.js.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>return a promise object was paused</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="restart"><span class="type-signature">(async) </span>restart<span class="signature">(id)</span><span class="type-signature"></span></h4>
+    
+
+    
+    <p class="summary"><p>Restart a task was paused</p>.</p>
+    
+
+
+
+<div class="description">
+    <p>Restart a task was paused</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">ObjectId</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>ObjectId task to want restart</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="services_task.service.js.html">services/task.service.js</a>, <a href="services_task.service.js.html#line47">line 47</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>return a promise object was restarted</p>
+</div>
+
+
+
+    
+
+
+
+
+
+        
     
 
     
@@ -260,13 +591,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Controllers.html">Controllers</a></li><li><a href="module-Models.html">Models</a></li><li><a href="module-Repositories.html">Repositories</a></li><li><a href="module-Services.html">Services</a></li></ul><h3>Classes</h3><ul><li><a href="AppServer.html">AppServer</a></li><li><a href="module-Controllers-ProjectController.html">ProjectController</a></li><li><a href="module-Controllers-TaskController.html">TaskController</a></li><li><a href="module-Controllers-UserController.html">UserController</a></li><li><a href="module-Models-Project.html">Project</a></li><li><a href="module-Models-Task.html">Task</a></li><li><a href="module-Models-TrackingTimeTask.html">TrackingTimeTask</a></li><li><a href="module-Models-User.html">User</a></li><li><a href="module-Repositories-BaseRepository.html">BaseRepository</a></li><li><a href="module-Repositories-ProjectRepository.html">ProjectRepository</a></li><li><a href="module-Repositories-TaskRepository.html">TaskRepository</a></li><li><a href="module-Repositories-TrackingTimeTaskRepository.html">TrackingTimeTaskRepository</a></li><li><a href="module-Repositories-UserRepository.html">UserRepository</a></li><li><a href="module-Services-AuthService.html">AuthService</a></li><li><a href="module-Services-BaseService.html">BaseService</a></li><li><a href="module-Services-ProjectService.html">ProjectService</a></li><li><a href="module-Services-TaskService.html">TaskService</a></li><li><a href="module-Services-TrackingTimeTaskService.html">TrackingTimeTaskService</a></li><li><a href="module-Services-UserService.html">UserService</a></li><li><a href="Response.html">Response</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Controllers.html">Controllers</a></li><li><a href="module-Core.html">Core</a></li><li><a href="module-Middlewares.html">Middlewares</a></li><li><a href="module-Models.html">Models</a></li><li><a href="module-Repositories.html">Repositories</a></li><li><a href="module-Services.html">Services</a></li></ul><h3>Classes</h3><ul><li><a href="AppServer.html">AppServer</a></li><li><a href="module-Controllers-ProjectController.html">ProjectController</a></li><li><a href="module-Controllers-TaskController.html">TaskController</a></li><li><a href="module-Controllers-UserController.html">UserController</a></li><li><a href="module-Core-BadRequestError.html">BadRequestError</a></li><li><a href="module-Core-ForbiddenRequestError.html">ForbiddenRequestError</a></li><li><a href="module-Core-NotAcceptableError.html">NotAcceptableError</a></li><li><a href="module-Core-NotAuthenticatedError.html">NotAuthenticatedError</a></li><li><a href="module-Core-NotFoundError.html">NotFoundError</a></li><li><a href="module-Core-ServerError.html">ServerError</a></li><li><a href="module-Core-TokenExpiredError.html">TokenExpiredError</a></li><li><a href="module-Models-Project.html">Project</a></li><li><a href="module-Models-Task.html">Task</a></li><li><a href="module-Models-TrackingTimeTask.html">TrackingTimeTask</a></li><li><a href="module-Models-User.html">User</a></li><li><a href="module-Repositories-BaseRepository.html">BaseRepository</a></li><li><a href="module-Repositories-ProjectRepository.html">ProjectRepository</a></li><li><a href="module-Repositories-TaskRepository.html">TaskRepository</a></li><li><a href="module-Repositories-TrackingTimeTaskRepository.html">TrackingTimeTaskRepository</a></li><li><a href="module-Repositories-UserRepository.html">UserRepository</a></li><li><a href="module-Services-BaseService.html">BaseService</a></li><li><a href="module-Services-ProjectService.html">ProjectService</a></li><li><a href="module-Services-TaskService.html">TaskService</a></li><li><a href="module-Services-TrackingTimeTaskService.html">TrackingTimeTaskService</a></li><li><a href="module-Services-UserService.html">UserService</a></li><li><a href="Response.html">Response</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getDateDiffInMilliseconds">getDateDiffInMilliseconds</a></li><li><a href="global.html#transformMillisecondsToFormatDate">transformMillisecondsToFormatDate</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Dec 09 2021 22:48:20 GMT-0500 (Colombia Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Dec 10 2021 21:27:01 GMT-0500 (Colombia Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -48,11 +48,33 @@ class BaseService {
     this.repository = repository;
   }
 
+  /**
+   * List all entity from model
+   *
+   * @async
+   * @param {Object} [filter={}] object filter to want apply to get query, example: find({})
+   * @param {Number} [limit=25] number limit to get data
+   * @param {Number} [page=1] pagination number
+   * @param {String|null} [sort=null] string name to sort query
+   * @returns {Promise&lt;Array.&lt;Model>>} return entity models array
+   */
   async list(filter = {}, limit = 25, page = 1, sort = null) {
-    if (isNaN(page)) page = 1;
-    if (isNaN(limit)) limit = 50;
+    if (isNaN(page)) {
+      page = 1;
+    }
+    if (isNaN(limit)) {
+      limit = 50;
+    }
     return await this.repository.list(filter, limit, page, sort);
   }
+
+  /**
+   * Retrieve a entity by id
+   *
+   * @async
+   * @param {String} id string represent a ObjectId of entity to retrieve
+   * @returns {Promise&lt;Object>} return a promise with entity object
+   */
   async retrieve(id) {
     if (!id) {
       throw Error('id is required');
@@ -68,15 +90,31 @@ class BaseService {
       error.message = 'entity does not found';
       throw error;
     }
-
     return document;
   }
+
+  /**
+   * Create a new entity
+   *
+   * @async
+   * @param {Object} entity object to represent a entity that you want to save
+   * @returns {Promise&lt;Model>} return entity that was created
+   */
   async create(entity) {
     if (!_.isObject(entity) || _.isEmpty(entity)) {
       throw new Error('entity must be not empty object');
     }
     return await this.repository.create(entity);
   }
+
+  /**
+   * Find and update an existing entity
+   *
+   * @async
+   * @param {String} id string represent a ObjectId of entity to update
+   * @param {Object} entity object with attrs you want update
+   * @returns {Promise&lt;Model|void>} returns a promise with entity that was updated
+   */
   async update(id, entity) {
     if (!id) {
       throw Error('id is required');
@@ -90,6 +128,14 @@ class BaseService {
     await this.retrieve(id); // Validate user by id
     return await this.repository.update(id, entity);
   }
+
+  /**
+   * Delete a entity by id
+   *
+   * @async
+   * @param {String} id string represent a ObjectId of entity to delete
+   * @returns {Promise&lt;Boolean>} return boolean value if entity was deleted
+   */
   async delete(id) {
     if (!id) {
       throw Error('id is required');
@@ -112,13 +158,13 @@ module.exports = BaseService;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Controllers.html">Controllers</a></li><li><a href="module-Models.html">Models</a></li><li><a href="module-Repositories.html">Repositories</a></li><li><a href="module-Services.html">Services</a></li></ul><h3>Classes</h3><ul><li><a href="AppServer.html">AppServer</a></li><li><a href="module-Controllers-ProjectController.html">ProjectController</a></li><li><a href="module-Controllers-TaskController.html">TaskController</a></li><li><a href="module-Controllers-UserController.html">UserController</a></li><li><a href="module-Models-Project.html">Project</a></li><li><a href="module-Models-Task.html">Task</a></li><li><a href="module-Models-TrackingTimeTask.html">TrackingTimeTask</a></li><li><a href="module-Models-User.html">User</a></li><li><a href="module-Repositories-BaseRepository.html">BaseRepository</a></li><li><a href="module-Repositories-ProjectRepository.html">ProjectRepository</a></li><li><a href="module-Repositories-TaskRepository.html">TaskRepository</a></li><li><a href="module-Repositories-TrackingTimeTaskRepository.html">TrackingTimeTaskRepository</a></li><li><a href="module-Repositories-UserRepository.html">UserRepository</a></li><li><a href="module-Services-AuthService.html">AuthService</a></li><li><a href="module-Services-BaseService.html">BaseService</a></li><li><a href="module-Services-ProjectService.html">ProjectService</a></li><li><a href="module-Services-TaskService.html">TaskService</a></li><li><a href="module-Services-TrackingTimeTaskService.html">TrackingTimeTaskService</a></li><li><a href="module-Services-UserService.html">UserService</a></li><li><a href="Response.html">Response</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Controllers.html">Controllers</a></li><li><a href="module-Core.html">Core</a></li><li><a href="module-Middlewares.html">Middlewares</a></li><li><a href="module-Models.html">Models</a></li><li><a href="module-Repositories.html">Repositories</a></li><li><a href="module-Services.html">Services</a></li></ul><h3>Classes</h3><ul><li><a href="AppServer.html">AppServer</a></li><li><a href="module-Controllers-ProjectController.html">ProjectController</a></li><li><a href="module-Controllers-TaskController.html">TaskController</a></li><li><a href="module-Controllers-UserController.html">UserController</a></li><li><a href="module-Core-BadRequestError.html">BadRequestError</a></li><li><a href="module-Core-ForbiddenRequestError.html">ForbiddenRequestError</a></li><li><a href="module-Core-NotAcceptableError.html">NotAcceptableError</a></li><li><a href="module-Core-NotAuthenticatedError.html">NotAuthenticatedError</a></li><li><a href="module-Core-NotFoundError.html">NotFoundError</a></li><li><a href="module-Core-ServerError.html">ServerError</a></li><li><a href="module-Core-TokenExpiredError.html">TokenExpiredError</a></li><li><a href="module-Models-Project.html">Project</a></li><li><a href="module-Models-Task.html">Task</a></li><li><a href="module-Models-TrackingTimeTask.html">TrackingTimeTask</a></li><li><a href="module-Models-User.html">User</a></li><li><a href="module-Repositories-BaseRepository.html">BaseRepository</a></li><li><a href="module-Repositories-ProjectRepository.html">ProjectRepository</a></li><li><a href="module-Repositories-TaskRepository.html">TaskRepository</a></li><li><a href="module-Repositories-TrackingTimeTaskRepository.html">TrackingTimeTaskRepository</a></li><li><a href="module-Repositories-UserRepository.html">UserRepository</a></li><li><a href="module-Services-BaseService.html">BaseService</a></li><li><a href="module-Services-ProjectService.html">ProjectService</a></li><li><a href="module-Services-TaskService.html">TaskService</a></li><li><a href="module-Services-TrackingTimeTaskService.html">TrackingTimeTaskService</a></li><li><a href="module-Services-UserService.html">UserService</a></li><li><a href="Response.html">Response</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getDateDiffInMilliseconds">getDateDiffInMilliseconds</a></li><li><a href="global.html#transformMillisecondsToFormatDate">transformMillisecondsToFormatDate</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Dec 09 2021 22:48:20 GMT-0500 (Colombia Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Dec 10 2021 21:27:01 GMT-0500 (Colombia Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

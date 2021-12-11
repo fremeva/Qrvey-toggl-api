@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: startup/index.js</title>
+    <title>JSDoc: Module: Core</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,59 +17,157 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: startup/index.js</h1>
+    <h1 class="page-title">Module: Core</h1>
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>const express = require('express');
+        
+            
+        
+    
+</header>
 
-/**
- * Class represent a express server application
- */
-class AppServer {
-  /**
-   * Create and configure express server application
-   * @param {Object} dependency Dependency injections
-   * @param {Object} dependency.Setting Setting object has all enviroments and configuration var
-   * @param {express.Router} dependency.RouterApp All routes to application
-   */
-  constructor({ Setting, RouterApp }) {
-    this._setting = Setting;
-    this._app = express().use(RouterApp);
-  }
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Exceptions API class</p></div>
+        
 
-  /**
-   * Get app value
-   * @return {express.Application} The app express instance.
-   */
-  get app() {
-    return this._app;
-  }
+        
+            
 
-  /**
-   * Run express server application
-   *
-   * @async
-   */
-  async run() {
-    this._app.listen(this._setting.PORT, (err) => {
-      if (err) throw new Error(err);
-      console.log(
-        `${this._setting.APP_NAME} Running on port ${this._setting.PORT}`
-      );
-    });
-  }
-}
 
-module.exports = AppServer;
-</code></pre>
-        </article>
-    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="core_exceptions.js.html">core/exceptions.js</a>, <a href="core_exceptions.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="module-Core-BadRequestError.html">BadRequestError</a></dt>
+            <dd></dd>
+        
+            <dt><a href="module-Core-ForbiddenRequestError.html">ForbiddenRequestError</a></dt>
+            <dd></dd>
+        
+            <dt><a href="module-Core-NotAcceptableError.html">NotAcceptableError</a></dt>
+            <dd></dd>
+        
+            <dt><a href="module-Core-NotAuthenticatedError.html">NotAuthenticatedError</a></dt>
+            <dd></dd>
+        
+            <dt><a href="module-Core-NotFoundError.html">NotFoundError</a></dt>
+            <dd></dd>
+        
+            <dt><a href="module-Core-ServerError.html">ServerError</a></dt>
+            <dd></dd>
+        
+            <dt><a href="module-Core-TokenExpiredError.html">TokenExpiredError</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

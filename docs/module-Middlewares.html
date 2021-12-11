@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: UserRepository</title>
+    <title>JSDoc: Module: Middlewares</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: UserRepository</h1>
+    <h1 class="page-title">Module: Middlewares</h1>
 
     
 
@@ -28,10 +28,10 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>
-            <span class="ancestors"><a href="module-Repositories.html">Repositories</a>~</span>UserRepository<span class="signature">(dependency)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Class represent methods allowed to manipulate the data to User model</p></div>
+            
+        
+            
         
     
 </header>
@@ -40,129 +40,20 @@
     <div class="container-overview">
     
         
-
-    
-    <h2>Constructor</h2>
-    
-
-    
-    <h4 class="name" id="UserRepository"><span class="type-signature"></span>new UserRepository<span class="signature">(dependency)</span><span class="type-signature"></span></h4>
-    
-
-    
-    <p class="summary"><p>User repository</p>.</p>
-    
-
-
-
-<div class="description">
-    <p>User repository</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
+            <div class="description"><p>APIError middleware module</p></div>
         
 
         
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>dependency</code></td>
             
 
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
 
 
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Dependency injections</p>
-                <h6>Properties</h6>
-                
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>User</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Model</span>
 
 
-            
-            </td>
 
-            
 
-            
 
-            <td class="description last"><p>Mongoose model User</p></td>
-        </tr>
 
-    
-    </tbody>
-</table>
-
-            </td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -198,7 +89,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="repositories_user.repository.js.html">repositories/user.repository.js</a>, <a href="repositories_user.repository.js.html#line10">line 10</a>
+        <a href="middlewares_api-error-handler.middleware.js.html">middlewares/api-error-handler.middleware.js</a>, <a href="middlewares_api-error-handler.middleware.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -228,6 +119,83 @@
 
 
 
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="middlewares_not-found.middleware.js.html">middlewares/not-found.middleware.js</a>, <a href="middlewares_not-found.middleware.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
     </div>
 
@@ -254,17 +222,17 @@
     
 
     
-    <h4 class="name" id="retrieveUserByField"><span class="type-signature">(async) </span>retrieveUserByField<span class="signature">(field, value)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
+    <h4 class="name" id="~NotFoundJsonResponseMiddleware"><span class="type-signature">(inner) </span>NotFoundJsonResponseMiddleware<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
     
 
     
-    <p class="summary"><p>Retrieve a User by any field</p>.</p>
+    <p class="summary"><p>Not Found Middleware Handler Response</p>.</p>
     
 
 
 
 <div class="description">
-    <p>Retrieve a User by any field</p>
+    <p>Not Found Middleware Handler Response</p>
 </div>
 
 
@@ -300,13 +268,13 @@
 
         <tr>
             
-                <td class="name"><code>field</code></td>
+                <td class="name"><code>req</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">String</span>
+<span class="param-type">Object</span>
 
 
             
@@ -316,20 +284,20 @@
 
             
 
-            <td class="description last"><p>Field name to retrieve</p></td>
+            <td class="description last"><p>Express request object</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>value</code></td>
+                <td class="name"><code>res</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">any</span>
+<span class="param-type">Object</span>
 
 
             
@@ -339,7 +307,7 @@
 
             
 
-            <td class="description last"><p>Value to retrieve</p></td>
+            <td class="description last"><p>Express response object</p></td>
         </tr>
 
     
@@ -380,7 +348,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="repositories_user.repository.js.html">repositories/user.repository.js</a>, <a href="repositories_user.repository.js.html#line28">line 28</a>
+        <a href="middlewares_not-found.middleware.js.html">middlewares/not-found.middleware.js</a>, <a href="middlewares_not-found.middleware.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -409,7 +377,399 @@
 
         
 <div class="param-desc">
-    <p>return a promise with user document object found</p>
+    <p>return Promise response object with NotFoundError object</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        
+            
+        
+            
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description"><p>Not found JSON Response error middleware module</p></div>
+        
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="middlewares_api-error-handler.middleware.js.html">middlewares/api-error-handler.middleware.js</a>, <a href="middlewares_api-error-handler.middleware.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="middlewares_not-found.middleware.js.html">middlewares/not-found.middleware.js</a>, <a href="middlewares_not-found.middleware.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~NotFoundJsonResponseMiddleware"><span class="type-signature">(inner) </span>NotFoundJsonResponseMiddleware<span class="signature">(req, res)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
+    
+
+    
+    <p class="summary"><p>Not Found Middleware Handler Response</p>.</p>
+    
+
+
+
+<div class="description">
+    <p>Not Found Middleware Handler Response</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Express request object</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Express response object</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="middlewares_not-found.middleware.js.html">middlewares/not-found.middleware.js</a>, <a href="middlewares_not-found.middleware.js.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>return Promise response object with NotFoundError object</p>
 </div>
 
 
