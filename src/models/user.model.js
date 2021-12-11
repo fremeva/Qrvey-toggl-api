@@ -32,18 +32,16 @@ const UserSchema = new Schema(
       updatedAt: true
     },
     toObject: { getters: true },
-    toJSON: { getters: true }
+    toJSON: {
+      getters: true,
+      transform: function (doc, ret) {
+        // Deleting sensitive data
+        delete ret.password;
+        return ret;
+      }
+    }
   }
 );
-
-/** Override transform toJSON */
-UserSchema.set('toJSON', {
-  transform: (doc, ret) => {
-    // Deleting sensitive data
-    delete ret.password;
-    return ret;
-  }
-});
 
 /**
  * Compare password with user password from db
@@ -68,5 +66,26 @@ UserSchema.pre('save', async function (next) {
   user.password = passwordHashed;
   next();
 });
+
+// Virtuals
+/* UserSchema.virtual('numTasks', {
+  ref:'Task',
+  localField: '_id',
+  foreignField: 'owner',
+  count: true,
+  autopopulate:true
+});
+
+UserSchema.virtual('numProjects', {
+  ref:'Task',
+  localField: '_id',
+  foreignField: 'owner',
+  count: true,
+  autopopulate:true
+}); */
+
+//Adding plugins
+UserSchema.plugin(require('mongoose-beautiful-unique-validation'));
+UserSchema.plugin(require('mongoose-autopopulate'));
 
 module.exports = model('User', UserSchema);
