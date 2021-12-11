@@ -8,6 +8,8 @@ const {
   Types: { ObjectId }
 } = require('mongoose');
 
+const { BadRequestError, NotFoundError } = require('../core/exceptions');
+
 /**
  * Class represent Base methods allowed to interact with repository
  */
@@ -49,18 +51,14 @@ class BaseService {
    */
   async retrieve(id) {
     if (!id) {
-      throw Error('id is required');
+      throw new BadRequestError('id params is required');
     }
     if (!ObjectId.isValid(id)) {
-      throw Error(`${id} is not valid id`);
+      throw new BadRequestError(`${id} is not valid id`);
     }
     const document = await this.repository.retrieve(id);
     if (!document) {
-      // TODO: Must be Improvement
-      const error = new Error();
-      error.status = 404;
-      error.message = 'entity does not found';
-      throw error;
+      throw new NotFoundError();
     }
     return document;
   }
@@ -74,7 +72,7 @@ class BaseService {
    */
   async create(entity) {
     if (!_.isObject(entity) || _.isEmpty(entity)) {
-      throw new Error('entity must be not empty object');
+      throw new BadRequestError('entity must be not empty to create');
     }
     return await this.repository.create(entity);
   }
@@ -89,13 +87,13 @@ class BaseService {
    */
   async update(id, entity) {
     if (!id) {
-      throw Error('id is required');
+      throw new BadRequestError('id params is required');
     }
     if (!ObjectId.isValid(id)) {
-      throw Error(`${id} is not valid id`);
+      throw new BadRequestError(`${id} is not valid id`);
     }
     if (!_.isObject(entity) || _.isEmpty(entity)) {
-      throw new Error('entity must be not empty object');
+      throw new BadRequestError('entity must be not empty to update');
     }
     await this.retrieve(id); // Validate user by id
     return await this.repository.update(id, entity);
@@ -110,10 +108,10 @@ class BaseService {
    */
   async delete(id) {
     if (!id) {
-      throw Error('id is required');
+      throw new BadRequestError('id params is required');
     }
     if (!ObjectId.isValid(id)) {
-      throw Error(`${id} is not valid id`);
+      throw new BadRequestError(`${id} is not valid id`);
     }
     await this.retrieve(id); // Validate user by id
     return await this.repository.delete(id);
