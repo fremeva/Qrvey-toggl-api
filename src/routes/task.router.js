@@ -9,5 +9,8 @@ module.exports = ({ TaskController }) => {
   router.put('/:id', TaskController.update);
   router.delete('/:id', TaskController.delete);
 
+  router.post('/:id/pause', TaskController.pause);
+  router.post('/:id/restart', TaskController.restart);
+
   return router;
 };
