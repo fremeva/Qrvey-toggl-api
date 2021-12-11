@@ -6,7 +6,7 @@
   },
   "item": [
     {
-      "name": "projects",
+      "name": "Projects",
       "item": [
         {
           "name": "list",
@@ -22,7 +22,7 @@
           },
           "response": [
             {
-              "name": "Successfully example",
+              "name": "list",
               "originalRequest": {
                 "method": "GET",
                 "header": [],
@@ -1141,7 +1141,7 @@
       ]
     },
     {
-      "name": "tasks",
+      "name": "Tasks",
       "item": [
         {
           "name": "list",
@@ -2756,7 +2756,7 @@
       ]
     },
     {
-      "name": "users",
+      "name": "Users",
       "item": [
         {
           "name": "list",
