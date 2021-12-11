@@ -22,7 +22,7 @@ const ProjectSchema = new Schema(
       autopopulate: { select: 'username name' }
     },
 
-    durationMiliseconds: {
+    durationMilliseconds: {
       type: Number,
       required: false,
       default: null

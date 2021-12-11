@@ -43,7 +43,7 @@ const TaskSchema = new Schema(
       },
       default: STATUS_TASK.RUNNING
     },
-    durationMiliseconds: {
+    durationMilliseconds: {
       type: Number,
       required: false,
       default: null
@@ -74,10 +74,12 @@ TaskSchema.virtual('trackingtimes', {
   ref: 'TrackingTimeTask',
   localField: '_id',
   foreignField: 'task',
-  autopopulate: { select: '-_id -__v -durationMiliseconds -startDate -endDate' }
+  autopopulate: {
+    select: '-_id -__v -durationMilliseconds -startDate -endDate'
+  }
 });
 
-// Document Middleware
+// Document, Models and Query Middlewares
 TaskSchema.pre('save', async function (next) {
   this.$locals.wasNew = this.isNew;
   this.$locals.modifiedPaths = this.modifiedPaths();
@@ -94,7 +96,7 @@ TaskSchema.post('save', async function (res, next) {
     await model('TrackingTimeTask').findOneAndUpdate(
       { enDate: null, task: res._id },
       { endDate: Date.now() },
-      { sort: { createdAt: -1 } }
+      { sort: { startDate: -1 }, new: true }
     );
   } else {
     await model('TrackingTimeTask').create({ task: res._id });
@@ -108,7 +110,7 @@ TaskSchema.post('findOneAndUpdate', async function (res, next) {
     await model('TrackingTimeTask').findOneAndUpdate(
       { enDate: null, task: res._id },
       { endDate: Date.now() },
-      { sort: { createdAt: -1 }, new: true }
+      { sort: { startDate: -1 }, new: true }
     );
   } else {
     await model('TrackingTimeTask').create({ task: res._id });
@@ -117,7 +119,9 @@ TaskSchema.post('findOneAndUpdate', async function (res, next) {
 });
 
 /**
+ * Delete trigger Handler function
  *
+ * @async
  * @param {Document} res
  * @param {Function} next
  */
